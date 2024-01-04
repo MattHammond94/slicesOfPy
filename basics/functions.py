@@ -34,13 +34,3 @@ print(py_4.isascii())  # returns true if all chars are ascii
 print(py_4.isalpha())  # returns true if all chars are alphabet letters
 print(py_4.strip())
 print(py_4.strip().upper())
-
-# String manipulation is the same:
-print(py_4[3])
-print(py_4[-5])
-
-# Slice notation (Uses and start and stop index value):
-sentence = "This is a sentance about pys"
-
-#If I only want the word "This"
-print(sentence[0:4])
