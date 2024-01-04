@@ -36,6 +36,3 @@ while not guess_correct:
     else: 
         print(f"{guess} is wrong! Try again!")
         
-      
-  
-

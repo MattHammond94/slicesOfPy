@@ -34,3 +34,15 @@ print(py_4.isascii())  # returns true if all chars are ascii
 print(py_4.isalpha())  # returns true if all chars are alphabet letters
 print(py_4.strip())
 print(py_4.strip().upper())
+
+# Custom functions:
+
+def greet(name):
+    print(f"Hello, {name}!")
+
+greet("BigMattyDon")
+
+def seconds_in_weeks(weeks):
+    return(weeks * 7 * 24 * 60 * 60)
+  
+print(seconds_in_weeks(2))
