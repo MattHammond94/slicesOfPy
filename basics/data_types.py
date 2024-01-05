@@ -128,6 +128,47 @@ print(py_king.keys())
 print(py_king.values())
 print(py_king.get("favourite_snake"))
 
+
+# Advanced Dictionaries:
+
+# Using comprehension within a dictionary
+square_dict = {num: num*num for num in range(1, 11)}
+print(square_dict)
+
+person = { "Name": "MatTyBoi", "Age": 44, "height": 5.10 }
+for item in person:
+    print(f"key value pair: {item} -> {person[item]}")
+
+
+friends = ["Will", "Bernie", "Garth", "Suze"]
+card_suit = ["Spades", "Clubs", "Diamonds", "Hearts"]
+from random import shuffle
+shuffle(card_suit)
+card_friends = {friend:card for (friend, card) in zip(friends, card_suit)}
+print(card_friends)
+
+players = { "Matt": 20, "Guido": 10, "Van-Dijk": 10 }
+new_player = { "Some_dude": 0 }
+players.update(new_player)
+print(players)
+
+# Next round using a loop:
+next_round = {}
+print(players.items())
+for player, score in players.items():
+    if score > 10:
+        next_round[player] = score
+        
+print(next_round)
+
+# Next round using filter:
+next_round_2 = dict(filter(lambda player: player[1] < 20, players.items()))
+print(next_round_2)
+
+# Next round using dictionary comprehension:
+next_round_3 = { key:value for (key, value) in players.items() if value > 10 }
+print(next_round_3)
+
 # Classes in Python:
 # class methods in Python require self to be passed as the first argument otherwise will error.
 class Person():
