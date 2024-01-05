@@ -46,3 +46,63 @@ def seconds_in_weeks(weeks):
     return(weeks * 7 * 24 * 60 * 60)
   
 print(seconds_in_weeks(2))
+
+
+# Using functions as arguments:
+
+def add(num1, num2):
+    return num1 + num2
+
+adder = add  # assigned the function to a variable
+
+print(adder(1, 2))
+
+# Defining multiple functions to pass as arguments
+
+def calculate_tax_for_the_shire(grossPay):
+    return grossPay * 0.2
+
+
+def calculate_tax_for_mirkwood(grossPay):
+    return grossPay * 0.9
+
+
+def calculate_tax_for_mordor(grossPay):
+    return grossPay * 0.9 + 500
+
+
+def report_pay(gross_pay, calculate_tax):
+    tax = calculate_tax(gross_pay)
+    net_pay = gross_pay - tax
+    return f"Your gross pay was {gross_pay}, minus {tax} makes your net pay {net_pay}"
+
+
+print("Frodo's Pay:")
+print(report_pay(5000.0, calculate_tax_for_the_shire))
+print("Bombadil's Pay:")
+print(report_pay(4320.0, calculate_tax_for_mirkwood))
+print("Mount Doom's Pay:")
+print(report_pay(5000.0, calculate_tax_for_mordor))
+
+# Weather report
+
+def as_sun_lover(temp):
+    if temp >= 25:
+        return "great"
+    else:
+        return "not great"
+    
+
+def as_snow_lover(temp):
+    if temp <= 0:
+        return "great"
+    else:
+        return "not great"
+
+def report_weather(temp, function):
+    return function(temp)
+
+print(report_weather(22, as_sun_lover))
+print(report_weather(26, as_sun_lover))
+print(report_weather(22, as_snow_lover))
+print(report_weather(0, as_snow_lover))

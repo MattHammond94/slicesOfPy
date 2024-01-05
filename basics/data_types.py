@@ -16,9 +16,9 @@ selected_word = sentence[10:18]
 print(f"A different {selected_word}")
 
 # Using %
-name = "Matt"
+my_name = "Matt"
 favourite_py = "Chocolate"
-print('Hello my name is %s! My favourite py is: %s,'%(name, favourite_py))
+print('Hello my name is %s! My favourite py is: %s,'%(my_name, favourite_py))
 
 # Uses integers and float values:
 print(2.5.is_integer())  # Returns False
@@ -58,13 +58,64 @@ print(films.index("The Thing"))
 print(films.clear())
 print(films)
 
+# Advanced lists (iterables):
+py_chart = ["ApplePy", "CherryPy", "ZebraPy"]
+interator_py_chart = iter(py_chart)
+
+# using next:
+iterable_list = iter(["ApplePy", "CherryPy", "ZebraPy"])
+x = next(iterable_list)
+print(x)
+
+x_2 = next(iterable_list)
+print(x_2)
+
+x_3 = next(iterable_list)
+print(x_3)
+
+# filter similar to JS - filter takes two args: a function (in the case below "is_acebook" function) and a list.
+# filter returns an iterable however. next allows us to grab the first element from the iterable which in this scenario would only be 1 item.
+passwords = [
+    {'service': 'acebook', 'password': 'password123', 'added_on': '22/03/22'},
+    {'service': 'makersbnb', 'password': 'qwerty789', 'added_on': '22/03/22'}
+]
+
+def is_acebook(password):
+    return password['service'] == 'acebook'
+
+print(next(filter(is_acebook, passwords)))
+
+# map, like filter takes a function and a list.
+result = map(lambda number: number * 2, [1, 2, 3, 4])
+print(list(result))
+
+
+# Using LAMBDAS:
+# lambdas are small functions with no names - lambda functions take a single argument in this case password:
+print(next(filter(lambda password: password["service"] == "acebook", passwords)))
+
+
+# List comprehensions:
+# returns a list 
+print([password for password in passwords if password['service'] == 'acebook'])
+print([x for x in passwords if x['service'] == 'acebook'][0])
+
+def are_passwords_long_enough(passwords):
+    return len([x for x in passwords if len(x['password']) > 8]) == 0
+
+print(are_passwords_long_enough(passwords))
+
+# Using a list comprehension over using the map function:
+print([number * 2 for number in [1, 2, 3, 4]])
+
+
 # Dictionaries (JS objects or Hashes)
 py_king = {
-  "name": "Guido Van Rossum",
-  "nationaility": "Dutch",
-  "favourite_programming_language": "Python",
-  "slices_of_py": ["Cherry", "Apple", "Shepherds"],
-  "age": 108
+    "name": "Guido Van Rossum",
+    "nationaility": "Dutch",
+    "favourite_programming_language": "Python",
+    "slices_of_py": ["Cherry", "Apple", "Shepherds"],
+    "age": 108
 }
 
 print(py_king["name"])
@@ -79,12 +130,25 @@ print(py_king.get("favourite_snake"))
 
 # Classes in Python:
 # class methods in Python require self to be passed as the first argument otherwise will error.
-class Greeter():
+class Person():
+    def __init__(self, name, birthday, nationality):
+        self.name = name
+        self.birthday = birthday
+        self.nationality = nationality
+        
+    def say_name(self):
+        return self.name
+        
     def hello(self):
         return "Hello!"
   
     def good_bye(self):
         return "Good bye!"
 
-greeter = Greeter()
+greeter = Person("MattyMoo", 14, "Irish")
+print(greeter)
 print(greeter.good_bye())
+print(greeter.say_name())
+
+# Can just directly call the initialized variables as below:
+print(greeter.birthday)
